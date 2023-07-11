@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/// This model contains an expression index which requires additional setup for migrations. Visit https://pris.ly/d/expression-indexes for more info.
+model rnaddrkor {
+  road_address_id          String   @db.VarChar(26)
+  legal_dong_code          String   @db.VarChar(20)
+  city_name                String   @db.VarChar(40)
+  district_name            String   @db.VarChar(40)
+  town_name                String   @db.VarChar(40)
+  ri_name                  String   @db.VarChar(40)
+  mountain_yn              Boolean
+  house_number             Int
+  detail_address_number    Int
+  road_code                String   @db.VarChar(12)
+  road_name                String   @db.VarChar(80)
+  underground_yn           String   @db.Char(1)
+  building_main_number     BigInt
+  building_sub_number      BigInt
+  administrative_dong_code String   @db.VarChar(60)
+  administrative_dong_name String   @db.VarChar(60)
+  postal_code              String   @db.Char(5)
+  old_road_address         String   @db.VarChar(400)
+  effective_date           DateTime @db.Timestamp(6)
+  apartment_type           String   @db.Char(1)
+  move_reason_code         String   @db.Char(2)
+  building_name            String   @db.VarChar(400)
+  district_building_name   String   @db.VarChar(400)
+  remarks                  String   @db.VarChar(200)
+
+  @@id([road_address_id, road_code, underground_yn, building_main_number, building_sub_number])
+  @@index([postal_code], map: "idx_rnaddrkor_postal_code")
+}
