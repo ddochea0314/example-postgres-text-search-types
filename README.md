@@ -2,13 +2,18 @@
 
 본 프로젝트는 postgres 문자열 검색 기능 사용을 위한 `tsvector`, `tsquery` 의 간략한 사용예시를 다룹니다.
 
-# 데이터 초기 구축
+# 데이터 초기 구축하기
+
+아래 순서에 따라 데이터를 구축합니다.
+> 일부 환경에 따라 관리자 권한으로 실행해야할 수 있습니다. (sudo su)
+
+## 1. npm 인스톨 명령어 실행
 
 ```
-npm i && npx ts-node script.ts
+npm i
 ```
 
-# env 설정
+## 2. env 설정
 
 db 접속 정보를 설정합니다. example 파일값을 토대로 `.env` 파일을 수정하세요.
 
@@ -16,6 +21,12 @@ db 접속 정보를 설정합니다. example 파일값을 토대로 `.env` 파�
 cp .env.example .env
 ```
 
+## 3. 데이터 insert 처리
+
+아래 명령어로 데이터를 db에 구축하는 스크립트를 실행합니다.
+```
+npx ts-node script.ts
+```
 
 # tsquery 연산자 종류
 
